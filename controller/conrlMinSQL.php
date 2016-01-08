@@ -4,31 +4,27 @@
 	class contrlMinSQL extends modelMinSQL {
 				
 		public function tblCreate($name = 'webproger2014'){
-			$this -> createObjectMysqli();
-			$this -> setUtf8();//Отправка кодировки
 			$this -> sql  = validateSQL::setValidSQL($this -> sql);//Проверка не пустой ли sql
 			$this -> sql  = validateSQL::delSymb($this -> sql);//Удаляем лишнюю запятую в запросе
-			$this -> shiSQL($name); //Отправка запроса
-			$this -> closeMysqli();// Закрытие мускула
-			$this -> noneSQL(); //Отчищаем запрос
+			$name  = validateSQL::setToString($name);
+			$this -> crTbl($name); // Подготовка запроса;
+			$this -> shiSQL(); // Отправка запроса
 		}
-		
+	  
 	   //удаление бд
 	   public function dropDB($bd = '') {
-	       $this -> createObjectMysqli();
-		   $this -> showError($this -> drBD($bd)); //Отправка запроса с возвратом ошибки
-           $this -> closeMysqli();// Закрытие мускула		   
+		   $this -> drBD($bd); //Подготовка запроса
+		   $this -> shiSQL(); //Отправка запроса	   
 	   }
 	   
 	   //Удаление таблицы
 	   public function dropTbl($tbl = '') {
-	       $this -> createObjectMysqli();
-		   $this -> showError($this -> drTbl($tbl)); //Отправка запроса с возвратом ошибки
-           $this -> closeMysqli();// Закрытие мускула		   
+		    $this -> drTbl($tbl); //Подготовка запроса
+			$this -> shiSQL(); //Отправка запроса	   
 	   }		
 	}
     
 	$minSQL = new contrlMinSQL();
-	$minSQL -> idAuto('pavlik');
-	$minSQL -> tblCreate('pavluhas');
+	$minSQL -> idAuto('pavl');
+	$minSQL -> tblCreate('administration');
 ?>

@@ -5,12 +5,13 @@
 	    protected $sql = '',		
 		          $paramType = '';
 				  
-		//Отправляет запрос sql при не удаче возвращает ошибку
-		protected function shiSQL($name = 'webproger2014') {
-			$name  = validateSQL::setToString($name);
-	        $this -> showError($this -> crTbl($name));//отправка запроса 
-		}
-		
+        protected function shiSQL() {
+		   $this -> createObjectMysqli();
+		   $this -> setUtf8();//Отправка кодировки
+		   $this -> showError();
+		   $this -> closeMysqli();
+		   $this -> noneSQL();
+	   }				  
 		//Запрос на автоматизированную нумерации ячейки
 		public function idAuto($id = 'id', $lng = 255){
 			$id  = validateSQL::setToString($id);
@@ -37,8 +38,8 @@
 			$this -> sql = '';
 		}
 		
-	   protected function showError($query) {
-		   if ($query !== true) {
+	   protected function showError() {
+		   if ($this -> mysqli -> query($this -> sql) !== true) {
 			   exit($this -> mysqli -> error);
 		   }
 	   }
