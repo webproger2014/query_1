@@ -82,8 +82,44 @@
 		//______________TEXT______________ 
         //////////////////////////////////
 
+      
+   	     //////////////////////////////////
+        //________________DATE____________
+         
+		public function nlDate($name = 'id') {
+			$name = validateSQL::setToString($name);
+            $this -> sql .= " {$name} DATE NULL,";			
+		}		 
 
-	protected function noneSQL() {
+		public function ntlDate($name = 'id') {
+			$name = validateSQL::setToString($name);
+            $this -> sql .= " {$name} DATE NOT NULL,";			
+		}		
+
+		public function nlDateTime($name = 'id') {
+			$name = validateSQL::setToString($name);
+            $this -> sql .= " {$name} DATETIME NULL,";			
+		}		 
+
+		public function ntlDateTime($name = 'id') {
+			$name = validateSQL::setToString($name);
+            $this -> sql .= " {$name} DATETIME NOT NULL,";			
+		}
+
+		public function nlTime($name = 'id') {
+			$name = validateSQL::setToString($name);
+            $this -> sql .= " {$name} TIME NULL,";			
+		}		 
+
+		public function ntlTime($name = 'id') {
+			$name = validateSQL::setToString($name);
+            $this -> sql .= " {$name} TIME NOT NULL,";			
+		}
+		
+		//______________DATE______________ 
+        //////////////////////////////////
+		
+	    protected function noneSQL() {
 			$this -> sql = '';
 		}
 		
