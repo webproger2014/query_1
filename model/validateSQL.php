@@ -36,13 +36,23 @@
 			return $str;
 	    }
 		
-		public static function setToCode($str){
+		
+		public static function setToCodeUtf8($str){
 			if (!is_string($str)) {
 				$str = 'utf8_general_ci';
 		    } elseif (is_string($str) && $str == '') {
 				$str = 'utf8_general_ci';
 			}
 			return $str;
-	    }		
+	    }
+
+		public static function setToCodeCp1251($str){
+			if (!is_string($str)) {
+				$str = 'cp1251_general_ci';
+		    } elseif (is_string($str) && $str == '') {
+				$str = 'cp1251_general_ci';
+			}
+			return $str;
+	    }				
 	}
 ?>

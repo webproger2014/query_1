@@ -19,23 +19,23 @@
 	
 		//Запрос на автоматизированную нумерации ячейки
 		public function idAuto($id = 'id', $lng = 255){
-			$id  = validateSQL::setToString($id);
-			$lng = validateSQL::setToBytes($lng);
-			$this -> sql .= " {$id} INT({$lng}) NOT NULL AUTO_INCREMENT, PRIMARY KEY({$id}),";
+			$id   = validateSQL::setToString($id);
+			$lng  = validateSQL::setToBytes($lng);
+			$this -> sql .= " {$id} INT({$lng}) NOT NULL AUTO_INCREMENT , PRIMARY KEY({$id}),";
 		}
 		
 		//Создаёт ячейку с типом INT NOT NULL
 		public function ntlInt($id = 'id', $lng = 255) {
-			$id  = validateSQL::setToString($id);
-			$lng = validateSQL::setToBytes($lng);
+			$id   = validateSQL::setToString($id);
+			$lng  = validateSQL::setToBytes($lng);
             $this -> sql .= " {$id} INT({$lng}) NOT NULL,";			
 		}
 
 		//Создаёт ячейку с типом INT  NULL
 		public function nlInt($id = 'id', $lng = 255) {
-			$id  = validateSQL::setToString($id);
-			$lng = validateSQL::setToBytes($lng);
-            $this -> sql .= " {$id} INT({$lng}) NULL,";			
+			$id   = validateSQL::setToString($id);
+			$lng  = validateSQL::setToBytes($lng);
+            $this -> sql .= " {$id} INT({$lng}),";			
 		}				
 		 
 		//_____________INT_________________ 
@@ -46,22 +46,44 @@
         //___________VARCHAR_____________ 
          
 		public function nlVar($name = 'id', $lng = 255, $code = 'utf8_general_ci') {
-			$name  = validateSQL::setToString($name);
-			$lng   = validateSQL::setToBytes($lng);
-			$code = validateSQL::setToCode($code);
+			$name = validateSQL::setToString($name);
+			$lng  = validateSQL::setToBytes($lng);
+			$code = validateSQL::setToCodeUtf8($code);
             $this -> sql .= " {$name} VARCHAR({$lng}) NULL COLLATE {$code},";			
 		}		 
 
 		public function ntlVar($name = 'id', $lng = 255, $code = 'utf8_general_ci') {
-			$name  = validateSQL::setToString($name);
-			$lng = validateSQL::setToBytes($lng);
-			$code = validateSQL::setToCode($code);
+			$name = validateSQL::setToString($name);
+			$lng  = validateSQL::setToBytes($lng);
+			$code = validateSQL::setToCodeUtf8($code);
             $this -> sql .= " {$name} VARCHAR({$lng}) NOT NULL COLLATE {$code},";			
 		}		
 		
 		//___________VARCHAR______________ 
         //////////////////////////////////
-		protected function noneSQL() {
+	
+
+
+        //////////////////////////////////
+        //________________TEXT 
+         
+		public function nlText($name = 'id',  $code = 'utf8_general_ci') {
+			$name = validateSQL::setToString($name);
+			$code = validateSQL::setToCodeUtf8($code);
+            $this -> sql .= " {$name} TEXT NULL COLLATE {$code},";			
+		}		 
+
+		public function ntlText($name = 'id', $code = 'utf8_general_ci') {
+			$name = validateSQL::setToString($name);
+			$code = validateSQL::setToCodeUtf8($code);
+            $this -> sql .= " {$name} TEXT NOT NULL COLLATE {$code},";			
+		}		
+		
+		//______________TEXT______________ 
+        //////////////////////////////////
+
+
+	protected function noneSQL() {
 			$this -> sql = '';
 		}
 		

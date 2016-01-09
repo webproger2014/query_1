@@ -37,11 +37,12 @@
 	}
     
 	$minSQL = new contrlMinSQL();
-	$minSQL -> createBD('n');
-	$minSQL -> bd = 'n';
-    $minSQL -> idAuto();
-    $minSQL -> ntlVar('login', 50, 55);
-    $minSQL -> ntlVar('emal', 50, 55);
-    $minSQL -> ntlVar('psw', 50, 5);
-    $minSQL -> tblCreate('userInfo5');
+	$minSQL -> createBD('sups');
+	$minSQL -> bd = 'sups';
+    //$minSQL -> nlInt('privet');
+    //$minSQL -> ntlVar('login', 50, 55);
+   // $minSQL -> ntlVar('emal', 50, 55);
+ //   $minSQL -> ntlVar('psw', 50, 5);
+   //  $minSQL -> nlText('comments');
+     $minSQL -> tblCreate('userInfo5');
 ?>
