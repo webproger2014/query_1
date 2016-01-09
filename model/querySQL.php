@@ -9,8 +9,12 @@
 		protected function setUtf8() {
 			$this -> mysqli -> query("SET NAMES 'utf8'");
 		}
-
-        protected function drBD($bd) {
+        
+		protected function crBD($bd) {
+			$this -> sql = "CREATE DATABASE {$bd};";
+		}
+		
+        protected function drDB($bd) {
 			$this -> sql = "DROP DATABASE {$bd};";
 		}
 

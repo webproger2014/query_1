@@ -35,5 +35,14 @@
 			}
 			return $str;
 	    }
+		
+		public static function setToCode($str){
+			if (!is_string($str)) {
+				$str = 'utf8_general_ci';
+		    } elseif (is_string($str) && $str == '') {
+				$str = 'utf8_general_ci';
+			}
+			return $str;
+	    }		
 	}
 ?>

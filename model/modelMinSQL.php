@@ -4,14 +4,19 @@
     class modelMinSql extends querySQL {
 	    protected $sql = '',		
 		          $paramType = '';
-				  
+		
+        //Отправка запроса		
         protected function shiSQL() {
 		   $this -> createObjectMysqli();
 		   $this -> setUtf8();//Отправка кодировки
 		   $this -> showError();
 		   $this -> closeMysqli();
 		   $this -> noneSQL();
-	   }				  
+	   }	
+         
+        ///////////////////////////////////
+        //_____________INT________________ 		
+	
 		//Запрос на автоматизированную нумерации ячейки
 		public function idAuto($id = 'id', $lng = 255){
 			$id  = validateSQL::setToString($id);
@@ -32,8 +37,30 @@
 			$lng = validateSQL::setToBytes($lng);
             $this -> sql .= " {$id} INT({$lng}) NULL,";			
 		}				
+		 
+		//_____________INT_________________ 
+		///////////////////////////////////
 		
-				
+
+        //////////////////////////////////
+        //___________VARCHAR_____________ 
+         
+		public function nlVar($name = 'id', $lng = 255, $code = 'utf8_general_ci') {
+			$name  = validateSQL::setToString($name);
+			$lng   = validateSQL::setToBytes($lng);
+			$code = validateSQL::setToCode($code);
+            $this -> sql .= " {$name} VARCHAR({$lng}) NULL COLLATE {$code},";			
+		}		 
+
+		public function ntlVar($name = 'id', $lng = 255, $code = 'utf8_general_ci') {
+			$name  = validateSQL::setToString($name);
+			$lng = validateSQL::setToBytes($lng);
+			$code = validateSQL::setToCode($code);
+            $this -> sql .= " {$name} VARCHAR({$lng}) NOT NULL COLLATE {$code},";			
+		}		
+		
+		//___________VARCHAR______________ 
+        //////////////////////////////////
 		protected function noneSQL() {
 			$this -> sql = '';
 		}
